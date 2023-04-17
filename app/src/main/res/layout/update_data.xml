@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:padding="10dp">
+
+    <TextView
+        android:id="@+id/tvTitle"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Update Data"
+        android:textColor="@android:color/black"
+        android:textSize="18sp"
+        android:textStyle="bold" />
+
+
+    <TextView
+        app:layout_constraintBottom_toBottomOf="@id/etUpdateWeight"
+        app:layout_constraintTop_toTopOf="@id/etUpdateWeight"
+        app:layout_constraintStart_toStartOf="parent"
+        android:id="@+id/tvWeightDaily"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="Weight"
+        android:textSize="18sp" />
+
+    <EditText
+        android:id="@+id/etUpdateWeight"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:hint="Enter weight"
+        android:inputType="numberDecimal"
+        android:minHeight="48dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/tvWeightDaily"
+        app:layout_constraintTop_toBottomOf="@id/tvTitle" />
+
+
+
+    <TextView
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toBottomOf="@id/etUpdateCalories"
+        app:layout_constraintTop_toTopOf="@id/etUpdateCalories"
+        android:id="@+id/tvCalories"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="Calories"
+        android:textSize="18sp" />
+
+    <EditText
+        android:id="@+id/etUpdateCalories"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:hint="Enter calories."
+        android:inputType="number"
+        android:minHeight="48dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/tvCalories"
+        app:layout_constraintTop_toBottomOf="@id/etUpdateWeight" />
+
+    <TextView
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toBottomOf="@id/etUpdateSteps"
+        app:layout_constraintTop_toTopOf="@id/etUpdateSteps"
+        android:id="@+id/tvSteps"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="Steps"
+        android:textSize="18sp" />
+
+    <EditText
+        android:id="@+id/etUpdateSteps"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:hint="Enter steps."
+        android:inputType="number"
+        android:minHeight="48dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/tvCalories"
+        app:layout_constraintTop_toBottomOf="@id/etUpdateCalories" />
+
+
+
+
+
+    <TextView
+        app:layout_constraintTop_toBottomOf="@id/etUpdateSteps"
+        app:layout_constraintEnd_toStartOf="@id/tvCancel"
+        android:id="@+id/tvUpdate"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:foreground="?attr/selectableItemBackground"
+        android:gravity="center"
+        android:padding="10dp"
+        android:text="UPDATE"
+        android:textColor="@android:color/holo_green_dark"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/tvCancel"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:foreground="?attr/selectableItemBackground"
+        android:gravity="center"
+        android:inputType="number"
+        android:padding="10dp"
+        android:text="CANCEL"
+        android:textColor="@android:color/holo_red_dark"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/etUpdateSteps"
+        tools:ignore="TouchTargetSizeCheck" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
