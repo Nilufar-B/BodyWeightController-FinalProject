@@ -5,14 +5,18 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.LinearLayout
 import android.widget.Toast
 import androidx.lifecycle.lifecycleScope
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.final_projectxml.R
+import com.example.final_projectxml.database.DataAdapter
 import com.example.final_projectxml.database.UserDataApplication
 import com.example.final_projectxml.database.UserDataDao
 import com.example.final_projectxml.database.UserDataEntity
 import com.example.final_projectxml.databinding.FragmentHomeBinding
 import com.example.final_projectxml.databinding.FragmentJournalBinding
+import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
 
 
@@ -30,6 +34,12 @@ class Home : Fragment() {
 
         binding?.btnAddData?.setOnClickListener{
             addData(userDataDao)
+        }
+        lifecycleScope.launch {
+            userDataDao.fetchAllData().collect{
+                val list = ArrayList(it)
+                setupListOfData(list, userDataDao)
+            }
         }
 
 
@@ -58,6 +68,22 @@ class Home : Fragment() {
             "Fields cannot be blank.",
             Toast.LENGTH_LONG).show()
         }
+    }
+
+    private fun setupListOfData(dataList: ArrayList<UserDataEntity>,
+    userDataDao: UserDataDao){
+               if (dataList.isNotEmpty()){
+                   val dataAdapter = DataAdapter(dataList
+
+                       )
+                   binding?.rvDataList?.layoutManager = LinearLayoutManager(requireContext())
+                   binding?.rvDataList?.adapter = dataAdapter
+                   binding?.rvDataList?.visibility = View.VISIBLE
+                   binding?.tvNoDataAvailable?.visibility = View.GONE
+               }else{
+                   binding?.rvDataList?.visibility = View.GONE
+                   binding?.tvNoDataAvailable?.visibility = View.VISIBLE
+               }
     }
 
 }

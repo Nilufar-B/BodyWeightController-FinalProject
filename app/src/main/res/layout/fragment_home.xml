@@ -1,14 +1,124 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Home">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".screens.Home">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <androidx.appcompat.widget.AppCompatAutoCompleteTextView
+        app:layout_constraintBottom_toBottomOf="@+id/etWeightDaily"
+        app:layout_constraintTop_toTopOf="@+id/etWeightDaily"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/etWeightDaily"
+        android:id="@+id/tvWeight"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Home" />
+        android:text="Weight"
+        android:textSize="18sp"
+        />
 
-</FrameLayout>
+      <androidx.appcompat.widget.AppCompatEditText
+          android:layout_marginStart="16dp"
+          app:layout_constraintEnd_toEndOf="parent"
+          app:layout_constraintTop_toTopOf="parent"
+          app:layout_constraintStart_toEndOf="@+id/tvWeight"
+          android:id="@+id/etWeightDaily"
+          android:layout_width="0dp"
+          android:layout_height="wrap_content"
+          android:inputType="numberDecimal"
+          android:hint="Enter your weight."
+          />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        app:layout_constraintEnd_toStartOf="@+id/etCalories"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toBottomOf="@+id/etCalories"
+        app:layout_constraintTop_toTopOf="@+id/etCalories"
+        android:id="@+id/tvCalories"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Calories"
+        android:textSize="18sp"
+        />
+
+    <androidx.appcompat.widget.AppCompatEditText
+        android:id="@+id/etCalories"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:hint="Enter calories."
+        android:inputType="number"
+        android:minHeight="48dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/tvCalories"
+        app:layout_constraintTop_toBottomOf="@+id/etWeightDaily" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        app:layout_constraintEnd_toStartOf="@+id/etSteps"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toBottomOf="@+id/etSteps"
+        app:layout_constraintTop_toTopOf="@+id/etSteps"
+        android:id="@+id/tvSteps"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Steps"
+        android:textSize="18sp"
+        />
+
+    <androidx.appcompat.widget.AppCompatEditText
+        android:id="@+id/etSteps"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:hint="Enter steps."
+        android:inputType="number"
+        android:minHeight="48dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/tvCalories"
+        app:layout_constraintTop_toBottomOf="@+id/etCalories" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        app:layout_constraintTop_toBottomOf="@+id/etSteps"
+        android:id="@+id/btnAddData"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Add"
+        />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:layout_margin="10dp"
+        app:layout_constraintTop_toBottomOf="@+id/btnAddData"
+        android:id="@+id/tvWeightDaily"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="All inserted records."
+        android:textColor="@color/black"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        />
+
+    <androidx.recyclerview.widget.RecyclerView
+        app:layout_constraintTop_toBottomOf="@+id/tvWeightDaily"
+        android:id="@+id/rvDataList"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:visibility="visible"
+        tools:visibility = "visible"
+        />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tvNoDataAvailable"
+        android:layout_width="match_parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/btnAddData"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="No records available!!!"
+        android:textSize="18sp"
+        android:visibility="gone"
+        tools:visibility="visible"
+        />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
