@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".Profile">
+    tools:context=".screens.Journal">
     <Toolbar
         android:id="@+id/tollbar_profile"
         android:layout_width="match_parent"
@@ -136,6 +136,7 @@
         android:text="Calculate"
         android:textColor="@color/white"
         android:textSize="18sp"
+        android:textAlignment="center"
         />
 
 

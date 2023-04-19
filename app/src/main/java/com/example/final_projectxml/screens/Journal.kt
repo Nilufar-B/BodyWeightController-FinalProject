@@ -1,4 +1,4 @@
-package com.example.final_projectxml
+package com.example.final_projectxml.screens
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -33,8 +33,8 @@ class Journal : Fragment() {
 
                 displayBMIResults(bmi)
             } else{
-               // Toast.makeText(this@Journal, "Please enter valid values.", Toast.LENGTH_SHORT)
-                 //   .show()
+                Toast.makeText(requireContext(), "Please enter valid values.", Toast.LENGTH_SHORT)
+                    .show()
 
 
 
