@@ -16,6 +16,9 @@ import com.example.final_projectxml.databinding.FragmentHomeBinding
 import com.example.final_projectxml.databinding.UpdateDataBinding
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
+import java.text.SimpleDateFormat
+import java.util.*
+import kotlin.collections.ArrayList
 
 
 class Home : Fragment() {
@@ -49,11 +52,17 @@ class Home : Fragment() {
         val weight = binding?.etWeightDaily?.text.toString()
         val calories = binding?.etCalories?.text.toString()
         val steps = binding?.etSteps?.text.toString()
+       // val date = SimpleDateFormat("yyyy-MM-dd", Locale.UK).format(Date())
 
         //check if fields is not empty
         if (weight.isNotEmpty() && calories.isNotEmpty() && steps.isNotEmpty()){
             lifecycleScope.launch{
-                userDataDao.insert(UserDataEntity(weight=weight.toFloat(), calories = calories.toInt(), steps = steps.toInt()  ))
+                userDataDao.insert(UserDataEntity(weight=weight.toFloat(),
+                                                  calories = calories.toInt(),
+                                                  steps = steps.toInt(),
+
+                )
+                  )
                 Toast.makeText(requireContext(), "Data saved!", Toast.LENGTH_LONG).show()
                //clear fields when we press the button
                 binding?.etWeightDaily?.text?.clear()
@@ -88,14 +97,22 @@ class Home : Fragment() {
                    binding?.rvDataList?.adapter = dataAdapter
                    binding?.rvDataList?.visibility = View.VISIBLE
                    binding?.tvNoDataAvailable?.visibility = View.GONE
+                   binding.tvColumnDate?.visibility = View.VISIBLE
+                   binding?.tvColumnWeight?.visibility = View.VISIBLE
+                   binding?.tvColumnCalories?.visibility = View.VISIBLE
+                   binding?.tvColumnSteps?.visibility = View.VISIBLE
                }else{
                    binding?.rvDataList?.visibility = View.GONE
                    binding?.tvNoDataAvailable?.visibility = View.VISIBLE
+                   binding.tvColumnDate?.visibility = View.GONE
+                   binding?.tvColumnWeight?.visibility = View.GONE
+                   binding?.tvColumnCalories?.visibility = View.GONE
+                   binding?.tvColumnSteps?.visibility = View.GONE
                }
     }
 
     fun updateDataList(id: Int, userDataDao: UserDataDao){
-        val updateData = Dialog(requireContext(), androidx.appcompat.R.style.Theme_AppCompat_Dialog)
+        val updateData = Dialog(requireContext(),R.style.Theme_Dialog)
         updateData.setCancelable(false)
         val binding = UpdateDataBinding.inflate(layoutInflater)
         updateData.setContentView(binding.root)
