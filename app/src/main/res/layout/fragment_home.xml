@@ -1,77 +1,58 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:fillViewport="true">
+
+
+<androidx.constraintlayout.widget.ConstraintLayout
+
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
     tools:context=".screens.Home">
 
-    <androidx.appcompat.widget.AppCompatAutoCompleteTextView
-        app:layout_constraintBottom_toBottomOf="@+id/etWeightDaily"
-        app:layout_constraintTop_toTopOf="@+id/etWeightDaily"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/etWeightDaily"
-        android:id="@+id/tvWeight"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Weight"
-        android:textSize="18sp"
-        />
+
 
       <androidx.appcompat.widget.AppCompatEditText
-          android:layout_marginStart="16dp"
-          app:layout_constraintEnd_toEndOf="parent"
-          app:layout_constraintTop_toTopOf="parent"
-          app:layout_constraintStart_toEndOf="@+id/tvWeight"
+        android:layout_margin="10dp"
           android:id="@+id/etWeightDaily"
-          android:layout_width="0dp"
+          android:layout_width="match_parent"
           android:layout_height="wrap_content"
+          android:layout_alignParentEnd="true"
+          android:layout_alignParentBottom="true"
+          android:layout_marginEnd="0dp"
+          android:layout_marginBottom="0dp"
           android:inputType="numberDecimal"
-          android:hint="Enter your weight."
+          android:hint="Weight (in kg)."
+          android:textSize="16sp"
           />
 
-    <androidx.appcompat.widget.AppCompatTextView
-        app:layout_constraintEnd_toStartOf="@+id/etCalories"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintBottom_toBottomOf="@+id/etCalories"
-        app:layout_constraintTop_toTopOf="@+id/etCalories"
-        android:id="@+id/tvCalories"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Calories"
-        android:textSize="18sp"
-        />
+
 
     <androidx.appcompat.widget.AppCompatEditText
         android:id="@+id/etCalories"
-        android:layout_width="0dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:hint="Enter calories."
+        android:textSize="16sp"
         android:inputType="number"
         android:minHeight="48dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/tvCalories"
         app:layout_constraintTop_toBottomOf="@+id/etWeightDaily" />
 
-    <androidx.appcompat.widget.AppCompatTextView
-        app:layout_constraintEnd_toStartOf="@+id/etSteps"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintBottom_toBottomOf="@+id/etSteps"
-        app:layout_constraintTop_toTopOf="@+id/etSteps"
-        android:id="@+id/tvSteps"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Steps"
-        android:textSize="18sp"
-        />
 
     <androidx.appcompat.widget.AppCompatEditText
         android:id="@+id/etSteps"
-        android:layout_width="0dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:hint="Enter steps."
+        android:textSize="16sp"
         android:inputType="number"
         android:minHeight="48dp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -128,8 +109,8 @@
         android:visibility="gone"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintTop_toBottomOf="@id/btnAddData"
-        app:layout_constraintVertical_bias="0.629"
-        tools:layout_editor_absoluteX="1dp"
+        app:layout_constraintVertical_bias="0.609"
+        tools:layout_editor_absoluteX="43dp"
         tools:visibility="visible" />
 
     <androidx.appcompat.widget.AppCompatTextView
@@ -143,7 +124,7 @@
         android:textSize="16sp"
         android:textStyle="bold"
         android:visibility="gone"
-        android:layout_marginLeft="10dp"
+        android:layout_marginLeft="20dp"
         app:layout_constraintBottom_toTopOf="@+id/rvDataList"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
@@ -161,7 +142,7 @@
         android:textColor="@android:color/black"
         android:textSize="16sp"
         android:textStyle="bold"
-        android:layout_marginLeft="70dp"
+        android:layout_marginLeft="90dp"
         app:layout_constraintBottom_toTopOf="@+id/rvDataList"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
@@ -173,7 +154,7 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginBottom="12dp"
-        android:layout_marginLeft="140dp"
+        android:layout_marginLeft="160dp"
         android:text="Calories"
         android:visibility="gone"
         android:textColor="@android:color/black"
@@ -190,7 +171,7 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginBottom="12dp"
-        android:layout_marginLeft="220dp"
+        android:layout_marginLeft="240dp"
         android:text="Steps"
         android:visibility="gone"
         android:textColor="@android:color/black"
@@ -203,3 +184,4 @@
         app:layout_constraintStart_toStartOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>

@@ -11,5 +11,5 @@ data class UserDataEntity(
     val weight: Float = 0.0f,
     val calories: Int = 0,
     val steps: Int = 0,
-
+    val date: String = ""
 )

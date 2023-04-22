@@ -1,6 +1,7 @@
 package com.example.final_projectxml.screens
 
 import android.app.AlertDialog
+import android.app.DatePickerDialog
 import android.app.Dialog
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -49,32 +50,56 @@ class Home : Fragment() {
     }
 
     fun addData (userDataDao: UserDataDao){
-        val weight = binding?.etWeightDaily?.text.toString()
-        val calories = binding?.etCalories?.text.toString()
-        val steps = binding?.etSteps?.text.toString()
-       // val date = SimpleDateFormat("yyyy-MM-dd", Locale.UK).format(Date())
 
-        //check if fields is not empty
-        if (weight.isNotEmpty() && calories.isNotEmpty() && steps.isNotEmpty()){
-            lifecycleScope.launch{
-                userDataDao.insert(UserDataEntity(weight=weight.toFloat(),
-                                                  calories = calories.toInt(),
-                                                  steps = steps.toInt(),
+        val calendar = Calendar.getInstance()
+        val year = calendar.get(Calendar.YEAR)
+        val month = calendar.get(Calendar.MONTH)
+        val  day = calendar.get(Calendar.DAY_OF_MONTH)
 
-                )
-                  )
-                Toast.makeText(requireContext(), "Data saved!", Toast.LENGTH_LONG).show()
-               //clear fields when we press the button
-                binding?.etWeightDaily?.text?.clear()
-                binding?.etCalories?.text?.clear()
-                binding?.etSteps?.text?.clear()
-            }
-        }else{
-            //show toast if fields is empty
-            Toast.makeText(requireContext(),
-            "Fields cannot be blank.",
-            Toast.LENGTH_LONG).show()
-        }
+        val datePickerDialog = DatePickerDialog(
+            requireContext(),
+            {_, year, monthOfYear, dayOfMonth ->
+                val sdf = SimpleDateFormat("yy/MM/dd", Locale.getDefault())
+                val date = sdf.format(Date(year - 1900, monthOfYear, dayOfMonth))
+                val weight = binding?.etWeightDaily?.text.toString()
+                val calories = binding?.etCalories?.text.toString()
+                val steps = binding?.etSteps?.text.toString()
+
+
+                //check if fields is not empty
+                if (weight.isNotEmpty() && calories.isNotEmpty() && steps.isNotEmpty()){
+                    lifecycleScope.launch{
+                        userDataDao.insert(UserDataEntity(
+                            date = date,
+                            weight=weight.toFloat(),
+                            calories = calories.toInt(),
+                            steps = steps.toInt(),
+
+                            )
+                        )
+                        Toast.makeText(requireContext(), "Data saved!", Toast.LENGTH_LONG).show()
+
+                        //clear fields when we press the button
+                        binding?.etWeightDaily?.text?.clear()
+                        binding?.etCalories?.text?.clear()
+                        binding?.etSteps?.text?.clear()
+                    }
+                }else{
+
+                    //show toast if fields is empty
+                    Toast.makeText(requireContext(),
+                        "Fields cannot be blank.",
+                        Toast.LENGTH_LONG).show()
+                }
+            },
+            year,
+            month,
+            day
+        )
+        datePickerDialog.show()
+
+
+
     }
 
     private fun setupListOfData(dataList: ArrayList<UserDataEntity>,
@@ -176,6 +201,10 @@ class Home : Fragment() {
         alertDialog.show() //show the dialog
 
         }
-
-
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
     }
+
+
+}
