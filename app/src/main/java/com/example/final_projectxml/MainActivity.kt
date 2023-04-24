@@ -5,8 +5,8 @@ import android.os.Bundle
 import androidx.fragment.app.Fragment
 import com.example.final_projectxml.databinding.ActivityMainBinding
 import com.example.final_projectxml.screens.Home
-import com.example.final_projectxml.screens.Journal
-import com.example.final_projectxml.screens.Profile
+import com.example.final_projectxml.screens.BMI
+import com.example.final_projectxml.screens.About
 
 class MainActivity : AppCompatActivity() {
 
@@ -22,8 +22,8 @@ class MainActivity : AppCompatActivity() {
         binding.bottomNavigationView.setOnItemSelectedListener {
             when(it.itemId){
                 R.id.home -> replaceFragment(Home())
-                R.id.journal -> replaceFragment(Journal())
-                R.id.profile -> replaceFragment(Profile())
+                R.id.bmi -> replaceFragment(BMI())
+                R.id.about -> replaceFragment(About())
 
                 else -> {
 

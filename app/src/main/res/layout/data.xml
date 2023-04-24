@@ -80,12 +80,14 @@
         android:layout_height="50dp"
         android:contentDescription="image_edit"
         android:scaleType="center"
+
         android:src="@drawable/ic_edit" />
 
     <ImageView
         android:id="@+id/ivDelete"
-        android:layout_width="50dp"
+        android:layout_width="57dp"
         android:layout_height="50dp"
+
         android:contentDescription="image_delete"
         android:scaleType="center"
         android:src="@drawable/ic_delete" />

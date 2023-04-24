@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".screens.Profile">
+    tools:context=".screens.About">
 <Toolbar
     android:id="@+id/tollbar_profile"
     android:layout_width="match_parent"

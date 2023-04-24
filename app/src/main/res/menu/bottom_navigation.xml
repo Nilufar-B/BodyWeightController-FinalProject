@@ -5,12 +5,12 @@
         android:id="@+id/home"
         android:icon="@drawable/baseline_home"
         />
-    <item android:title="Journal"
-        android:id="@+id/journal"
+    <item android:title="BMI"
+        android:id="@+id/bmi"
         android:icon="@drawable/baseline_journal"
         />
-    <item android:title="Profile"
-        android:id="@+id/profile"
+    <item android:title="About"
+        android:id="@+id/about"
         android:icon="@drawable/baseline_profile"
         />
 </menu>

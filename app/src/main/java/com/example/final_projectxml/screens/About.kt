@@ -7,7 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import com.example.final_projectxml.R
 
-class Profile : Fragment() {
+class About : Fragment() {
 
 
     override fun onCreateView(

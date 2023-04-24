@@ -21,6 +21,29 @@
 
 
     <TextView
+        app:layout_constraintBottom_toBottomOf="@id/etDate"
+        app:layout_constraintTop_toTopOf="@id/etDate"
+        app:layout_constraintStart_toStartOf="parent"
+        android:id="@+id/tvDate"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="Date"
+        android:textSize="18sp" />
+
+    <EditText
+        android:id="@+id/etDate"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:hint="yy/MM/dd"
+        android:inputType=""
+        android:minHeight="48dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/tvDate"
+        app:layout_constraintTop_toBottomOf="@id/tvTitle" />
+
+
+    <TextView
         app:layout_constraintBottom_toBottomOf="@id/etUpdateWeight"
         app:layout_constraintTop_toTopOf="@id/etUpdateWeight"
         app:layout_constraintStart_toStartOf="parent"
@@ -29,6 +52,7 @@
         android:layout_height="wrap_content"
         android:text="Weight"
         android:textSize="18sp" />
+
 
     <EditText
         android:id="@+id/etUpdateWeight"
@@ -39,10 +63,9 @@
         android:inputType="numberDecimal"
         android:minHeight="48dp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.4"
         app:layout_constraintStart_toEndOf="@id/tvWeightDaily"
-        app:layout_constraintTop_toBottomOf="@id/tvTitle" />
-
-
+        app:layout_constraintTop_toBottomOf="@id/etDate" />
 
     <TextView
         app:layout_constraintStart_toStartOf="parent"

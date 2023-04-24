@@ -3,12 +3,15 @@ package com.example.final_projectxml.screens
 import android.app.AlertDialog
 import android.app.DatePickerDialog
 import android.app.Dialog
+import android.os.Build
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.annotation.RequiresApi
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.final_projectxml.R
@@ -18,6 +21,7 @@ import com.example.final_projectxml.databinding.UpdateDataBinding
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
 import java.text.SimpleDateFormat
+import java.time.LocalDate
 import java.util.*
 import kotlin.collections.ArrayList
 
@@ -26,6 +30,7 @@ class Home : Fragment() {
 
     private var _binding: FragmentHomeBinding? = null
     private val binding get() = _binding!!
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -43,11 +48,9 @@ class Home : Fragment() {
                 setupListOfData(list, userDataDao)
             }
         }
-
-
         return view
-
     }
+
 
     fun addData (userDataDao: UserDataDao){
 
@@ -56,11 +59,13 @@ class Home : Fragment() {
         val month = calendar.get(Calendar.MONTH)
         val  day = calendar.get(Calendar.DAY_OF_MONTH)
 
+        val date = LocalDate.of(year, month, day)
         val datePickerDialog = DatePickerDialog(
             requireContext(),
             {_, year, monthOfYear, dayOfMonth ->
-                val sdf = SimpleDateFormat("yy/MM/dd", Locale.getDefault())
-                val date = sdf.format(Date(year - 1900, monthOfYear, dayOfMonth))
+                val dateFormat = SimpleDateFormat("yy/MM/dd", Locale.getDefault())
+              //  val date = sdf.format(Date(year - 1900, monthOfYear, dayOfMonth))
+                val dateString = dateFormat.format(date)
                 val weight = binding?.etWeightDaily?.text.toString()
                 val calories = binding?.etCalories?.text.toString()
                 val steps = binding?.etSteps?.text.toString()
@@ -70,7 +75,7 @@ class Home : Fragment() {
                 if (weight.isNotEmpty() && calories.isNotEmpty() && steps.isNotEmpty()){
                     lifecycleScope.launch{
                         userDataDao.insert(UserDataEntity(
-                            date = date,
+                            date = dateString,
                             weight=weight.toFloat(),
                             calories = calories.toInt(),
                             steps = steps.toInt(),
@@ -78,14 +83,12 @@ class Home : Fragment() {
                             )
                         )
                         Toast.makeText(requireContext(), "Data saved!", Toast.LENGTH_LONG).show()
-
                         //clear fields when we press the button
                         binding?.etWeightDaily?.text?.clear()
                         binding?.etCalories?.text?.clear()
                         binding?.etSteps?.text?.clear()
                     }
                 }else{
-
                     //show toast if fields is empty
                     Toast.makeText(requireContext(),
                         "Fields cannot be blank.",
@@ -98,8 +101,34 @@ class Home : Fragment() {
         )
         datePickerDialog.show()
 
+        val weight = binding?.etWeightDaily?.text.toString()
+        val calories = binding?.etCalories?.text.toString()
+        val steps = binding?.etSteps?.text.toString()
 
 
+        //check if fields is not empty
+        if (weight.isNotEmpty() && calories.isNotEmpty() && steps.isNotEmpty()){
+            lifecycleScope.launch{
+                userDataDao.insert(UserDataEntity(
+
+                                                  weight=weight.toFloat(),
+                                                  calories = calories.toInt(),
+                                                  steps = steps.toInt(),
+
+                )
+                  )
+                Toast.makeText(requireContext(), "Data saved!", Toast.LENGTH_LONG).show()
+               //clear fields when we press the button
+                binding?.etWeightDaily?.text?.clear()
+                binding?.etCalories?.text?.clear()
+                binding?.etSteps?.text?.clear()
+            }
+        }else{
+            //show toast if fields is empty
+            Toast.makeText(requireContext(),
+            "Fields cannot be blank.",
+            Toast.LENGTH_LONG).show()
+        }
     }
 
     private fun setupListOfData(dataList: ArrayList<UserDataEntity>,
@@ -115,9 +144,7 @@ class Home : Fragment() {
                               }
                           }
                       }
-
                   }
-
                    binding?.rvDataList?.layoutManager = LinearLayoutManager(requireContext())
                    binding?.rvDataList?.adapter = dataAdapter
                    binding?.rvDataList?.visibility = View.VISIBLE
@@ -145,19 +172,22 @@ class Home : Fragment() {
         lifecycleScope.launch {
             userDataDao.fetchDataById(id).collect{
                 if (it != null){
+                    binding.etDate.setText(it.date)
                     binding.etUpdateWeight.setText(it.weight.toString())
                     binding.etUpdateCalories.setText(it.calories.toString())
                     binding.etUpdateSteps.setText(it.steps.toString())
+
                 }
             }
         }
 
         binding.tvUpdate.setOnClickListener{
+
             val weight = binding.etUpdateWeight.text.toString()
             val calories = binding.etUpdateCalories.text.toString()
             val steps = binding.etUpdateSteps.text.toString()
 
-            if(weight.isNotEmpty() && calories.isNotEmpty() && steps.isNotEmpty()){
+            if( weight.isNotEmpty() && calories.isNotEmpty() && steps.isNotEmpty()){
                 lifecycleScope.launch {
                     userDataDao.update(UserDataEntity(id, weight.toFloat(), calories.toInt(), steps.toInt()))
                     Toast.makeText(requireContext(), "Data Updated", Toast.LENGTH_LONG).show()

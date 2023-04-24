@@ -1,11 +1,13 @@
 package com.example.final_projectxml.database
 
+
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
 import com.example.final_projectxml.R
 import com.example.final_projectxml.databinding.DataBinding
+import kotlin.collections.ArrayList
 
 class DataAdapter(private val data: ArrayList<UserDataEntity>,
                   private val updateListener:(id:Int) -> Unit,
@@ -21,6 +23,7 @@ class DataAdapter(private val data: ArrayList<UserDataEntity>,
         val tvSteps = binding.tvSteps
         val ivEdit = binding.ivEdit
         val ivDelete = binding.ivDelete
+        val tvDate = binding.tvDate
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -35,6 +38,7 @@ class DataAdapter(private val data: ArrayList<UserDataEntity>,
         val context = holder.itemView.context
         val data = data[position]
 
+        holder.tvDate.text = data.date
         holder.tvWeightDaily.text = data.weight.toString()
         holder.tvCalories.text = data.calories.toString()
         holder.tvSteps.text = data.steps.toString()
