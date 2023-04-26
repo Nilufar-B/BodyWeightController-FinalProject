@@ -1,21 +1,24 @@
 package com.example.final_projectxml.screens
 
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.example.final_projectxml.R
+import android.widget.Toast
+import com.example.final_projectxml.api.BodyFatResponse
+import com.example.final_projectxml.api.BodyFatService
 import com.example.final_projectxml.databinding.FragmentNavycalcBinding
-import java.math.BigDecimal
-import java.math.RoundingMode
-import kotlin.math.log
-import kotlin.math.log10
+import retrofit2.*
+import retrofit2.converter.gson.GsonConverterFactory
 
 class NavyCalc : Fragment() {
 
     private var _binding: FragmentNavycalcBinding? = null
     private val binding get() = _binding!!
+
+    private val apiBaseUrl = "https://zylalabs.com/api/428/fitness+calculator+api/330/"
 
 
     override fun onCreateView(
@@ -26,10 +29,53 @@ class NavyCalc : Fragment() {
         _binding = FragmentNavycalcBinding.inflate(inflater, container, false)
        val view = binding.root
 
+
+        binding.btnCalculate.setOnClickListener{
+
+            val weight = binding.etWeight.text.toString()
+            val height = binding.etHeight.text.toString()
+            val gender = if (binding.maleRadioBtn.isChecked) "male" else "female"
+            val age = binding.etAge.text.toString()
+
+
+            val retrofit = Retrofit.Builder()
+                .baseUrl(apiBaseUrl)
+                .addConverterFactory(GsonConverterFactory.create())
+                .build()
+
+
+          val api = retrofit.create(BodyFatService::class.java)
+            val call = api.getBodyFatPercentage(weight, height,gender, age)
+           call.enqueue(object : Callback<BodyFatResponse>{
+                override fun onResponse(
+                    call: Call<BodyFatResponse>,
+                    response: Response<BodyFatResponse>
+                ) {
+                    if (response.isSuccessful){
+                        val bodyFatPercentage = response.body()?.info?.description?: "Error"
+                        binding.NavyResult.visibility = View.VISIBLE
+                        binding.tvNavyValue.text = "$bodyFatPercentage"
+                        println("Fat$bodyFatPercentage")
+                        Toast.makeText(requireContext(), "Body fat percentage is $bodyFatPercentage",
+                        Toast.LENGTH_LONG).show()
+                    }else{
+                        Toast.makeText(requireContext(), "Failed to calculate body fat percentage",
+                            Toast.LENGTH_LONG).show()
+                    }
+                }
+
+                override fun onFailure(call: Call<BodyFatResponse>, t: Throwable) {
+                    Toast.makeText(requireContext(), "Something went wrong!",
+                    Toast.LENGTH_LONG).show()
+                    Log.e("Body Fat Percentage", "Error: ${t.message}")
+                }
+            })
+        }
+
         return view
     }
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+   /* override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
         binding.btnCalculate.setOnClickListener{
@@ -42,11 +88,11 @@ class NavyCalc : Fragment() {
 
             binding.NavyResult.visibility = View.VISIBLE
             binding.tvNavyValue.text = "$bodyFatPercentage%"
-            binding.tvNavyDescription.text = "Your body fat is normal."
+           // binding.tvNavyDescription.text = "Your body fat is normal."
         }
-    }
+    }*/
 
-    private fun calculatePercentage(height: Double, neck: Double, waist: Double, hip: Double): BigDecimal? {
+  /*  private fun calculatePercentage(height: Double, neck: Double, waist: Double, hip: Double): BigDecimal? {
 
         val heightValue = height
         val neckValue = neck
@@ -61,7 +107,8 @@ class NavyCalc : Fragment() {
 
         return  result
 
-    }
+    }*/
 
 
 }
+

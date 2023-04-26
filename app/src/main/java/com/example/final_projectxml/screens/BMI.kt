@@ -34,21 +34,19 @@ class BMI : Fragment() {
         _binding = FragmentBmiBinding.inflate(layoutInflater, container, false)
         val view = binding.root
 
-     //   val viewModelBMI = ViewModelProvider(this).get(ViewModelBMI::class.java)
-
         savedInstanceState?.let {
             selectedItemId = it.getInt("selectedItemId", 0)
         }
 
 
         
-        binding?.btnCalculateBMI?.setOnClickListener{
+        binding.btnCalculateBMI.setOnClickListener{
             if (validateMetricUnits()){
 
             //    val heightValue: Float = binding?.etHeight?.text.toString().toFloat() / 100 //to get height value in meters
 
-                val heightValue: Float = binding?.etHeight?.text.toString().toFloat()
-                val weightValue: Float = binding?.etWeight?.text.toString().toFloat()
+                val heightValue: Float = binding.etHeight.text.toString().toFloat()
+                val weightValue: Float = binding.etWeight.text.toString().toFloat()
 
               //  val bmi = weightValue / (heightValue*heightValue)
                viewModelBMI.calculateBMI(heightValue, weightValue)
@@ -76,30 +74,7 @@ class BMI : Fragment() {
 
         val bmiLable:String
         val bmiDescription: String
-/*
-        if (bmi.compareTo(15f) <= 0){
-            bmiLable = "Very severaly Underweight"
-            bmiDescription = "Underweight, you need to eat more!Take care of yourself!"
-        }else if (bmi.compareTo(15f) > 0 && bmi.compareTo(16f) <= 0){
-            bmiLable = "Severely underweight"
-            bmiDescription = "Underweight, you need to eat more!Take care of yourself!"
-        }else if (bmi.compareTo(16f) > 0 && bmi.compareTo(18.5f) <= 0){
-            bmiLable = "Underweight"
-            bmiDescription = "Underweight, you need to eat more!Take care of yourself!"
-        }else if (bmi.compareTo(18.5f) > 0 && bmi.compareTo(25f) <= 0){
-            bmiLable = "Normal"
-            bmiDescription = "You are in a good shape!"
-        }else if (bmi.compareTo(25f) > 0 && bmi.compareTo(30f) <= 0){
-            bmiLable = "Overweight"
-            bmiDescription = "You need to take care of yourself!Track calories and activity"
-        }else if (bmi.compareTo(30f) > 0 && bmi.compareTo(35f) <= 0){
-            bmiLable = "Obesity"
-            bmiDescription = "Act now! Take care of yourself!"
-        }else{
-            bmiLable = "Obese Class ||| (Very Severely obese)"
-            bmiDescription = "OMG! Pull yourself together before it's too late!"
-        }
-*/
+
         when {
             bmi <= 15f -> {
                 bmiLable = "Very severaly Underweight"
@@ -133,10 +108,10 @@ class BMI : Fragment() {
 
         val bmiValue = BigDecimal(bmi.toDouble()).setScale(2, RoundingMode.HALF_EVEN).toString() //cat value to display
 
-        binding?.bmiResult?.visibility = View.VISIBLE
-        binding?.tvBMIValue?.text = bmiValue
-        binding?.tvBMIType?.text = bmiLable
-        binding?.tvBMIDescription?.text = bmiDescription
+        binding.bmiResult.visibility = View.VISIBLE
+        binding.tvBMIValue.text = bmiValue
+        binding.tvBMIType.text = bmiLable
+        binding.tvBMIDescription.text = bmiDescription
 
     }
 
@@ -144,9 +119,9 @@ class BMI : Fragment() {
     private fun validateMetricUnits(): Boolean{
        var isValid = true
 
-        if(binding?.etWeight?.text.toString().isEmpty()){
+        if(binding.etWeight.text.toString().isEmpty()){
             isValid = false
-        } else if(binding?.etHeight?.text.toString().isEmpty()){
+        } else if(binding.etHeight.text.toString().isEmpty()){
             isValid = false
         }
         return isValid

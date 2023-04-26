@@ -13,4 +13,9 @@
         android:id="@+id/navycalc"
         android:icon="@drawable/baseline_body"
         />
+
+    <item android:title="About"
+        android:id="@+id/about"
+        android:icon="@drawable/baseline_about"
+        />
 </menu>

@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import com.example.final_projectxml.databinding.ActivityMainBinding
+import com.example.final_projectxml.screens.About
 import com.example.final_projectxml.screens.Home
 import com.example.final_projectxml.screens.BMI
 import com.example.final_projectxml.screens.NavyCalc
@@ -21,7 +22,8 @@ class MainActivity : AppCompatActivity() {
 
         val homeFragment = Home()
         val bmiFragment = BMI()
-        val navyCalc = NavyCalc()
+        val navyCalcFragment = NavyCalc()
+        val aboutFragment = About()
 
         replaceFragment(homeFragment)
 
@@ -29,7 +31,8 @@ class MainActivity : AppCompatActivity() {
             when(it.itemId){
                 R.id.home -> replaceFragment(homeFragment)
                 R.id.bmi -> replaceFragment(bmiFragment)
-                R.id.navycalc -> replaceFragment(navyCalc)
+                R.id.navycalc -> replaceFragment(navyCalcFragment)
+                R.id.about -> replaceFragment(aboutFragment)
             }
             true
         }
