@@ -52,37 +52,42 @@ class Home : Fragment() {
     }
 
 
+
+    //create function to add data
     fun addData (userDataDao: UserDataDao){
 
+        //
         val calendar = Calendar.getInstance()
         val year = calendar.get(Calendar.YEAR)
         val month = calendar.get(Calendar.MONTH)
         val  day = calendar.get(Calendar.DAY_OF_MONTH)
 
-        val date = LocalDate.of(year, month, day)
         val datePickerDialog = DatePickerDialog(
             requireContext(),
             {_, year, monthOfYear, dayOfMonth ->
-                val dateFormat = SimpleDateFormat("yy/MM/dd", Locale.getDefault())
+                val date = LocalDate.of(year, monthOfYear + 1, dayOfMonth)
+                println(date)
               //  val date = sdf.format(Date(year - 1900, monthOfYear, dayOfMonth))
-                val dateString = dateFormat.format(date)
-                val weight = binding?.etWeightDaily?.text.toString()
-                val calories = binding?.etCalories?.text.toString()
-                val steps = binding?.etSteps?.text.toString()
+               // val dateString = dateFormat.format(date)
+                val weight = binding.etWeightDaily.text.toString()
+                val calories = binding.etCalories.text.toString()
+                val steps = binding.etSteps.text.toString()
+
 
 
                 //check if fields is not empty
                 if (weight.isNotEmpty() && calories.isNotEmpty() && steps.isNotEmpty()){
                     lifecycleScope.launch{
                         userDataDao.insert(UserDataEntity(
-                            date = dateString,
                             weight=weight.toFloat(),
                             calories = calories.toInt(),
                             steps = steps.toInt(),
+                            date = date.toString(),
 
                             )
                         )
                         Toast.makeText(requireContext(), "Data saved!", Toast.LENGTH_LONG).show()
+
                         //clear fields when we press the button
                         binding?.etWeightDaily?.text?.clear()
                         binding?.etCalories?.text?.clear()
@@ -99,8 +104,10 @@ class Home : Fragment() {
             month,
             day
         )
-        datePickerDialog.show()
 
+        datePickerDialog.show() //show calendar
+
+/*
         val weight = binding?.etWeightDaily?.text.toString()
         val calories = binding?.etCalories?.text.toString()
         val steps = binding?.etSteps?.text.toString()
@@ -118,6 +125,7 @@ class Home : Fragment() {
                 )
                   )
                 Toast.makeText(requireContext(), "Data saved!", Toast.LENGTH_LONG).show()
+
                //clear fields when we press the button
                 binding?.etWeightDaily?.text?.clear()
                 binding?.etCalories?.text?.clear()
@@ -128,7 +136,7 @@ class Home : Fragment() {
             Toast.makeText(requireContext(),
             "Fields cannot be blank.",
             Toast.LENGTH_LONG).show()
-        }
+        }*/
     }
 
     private fun setupListOfData(dataList: ArrayList<UserDataEntity>,
@@ -145,8 +153,9 @@ class Home : Fragment() {
                           }
                       }
                   }
+                   //set the layoutManager to use recyclerView
                    binding?.rvDataList?.layoutManager = LinearLayoutManager(requireContext())
-                   binding?.rvDataList?.adapter = dataAdapter
+                   binding?.rvDataList?.adapter = dataAdapter //adapter instance
                    binding?.rvDataList?.visibility = View.VISIBLE
                    binding?.tvNoDataAvailable?.visibility = View.GONE
                    binding.tvColumnDate?.visibility = View.VISIBLE
@@ -169,6 +178,7 @@ class Home : Fragment() {
         val binding = UpdateDataBinding.inflate(layoutInflater)
         updateData.setContentView(binding.root)
 
+        //launch a coroutine block to fetch the selected data and update it
         lifecycleScope.launch {
             userDataDao.fetchDataById(id).collect{
                 if (it != null){
@@ -183,15 +193,16 @@ class Home : Fragment() {
 
         binding.tvUpdate.setOnClickListener{
 
+            val date = binding.etDate.text.toString()
             val weight = binding.etUpdateWeight.text.toString()
             val calories = binding.etUpdateCalories.text.toString()
             val steps = binding.etUpdateSteps.text.toString()
 
-            if( weight.isNotEmpty() && calories.isNotEmpty() && steps.isNotEmpty()){
+            if( weight.isNotEmpty() && calories.isNotEmpty() && steps.isNotEmpty() && date.isNotEmpty()){
                 lifecycleScope.launch {
-                    userDataDao.update(UserDataEntity(id, weight.toFloat(), calories.toInt(), steps.toInt()))
+                    userDataDao.update(UserDataEntity(id, weight.toFloat(), calories.toInt(), steps.toInt(), date))
                     Toast.makeText(requireContext(), "Data Updated", Toast.LENGTH_LONG).show()
-                    updateData.dismiss()
+                    updateData.dismiss() //dismiss update dialog
                 }
             }else{
                 Toast.makeText(requireContext(), "Fields cannot be blank!", Toast.LENGTH_LONG).show()
@@ -203,13 +214,14 @@ class Home : Fragment() {
             updateData.show()  //start the dialog and display it on screen
     }
 
+    //funktion to show Alert Dialog and delete selected data
     fun deleteDataAlertDialog(id:Int, userDataDao: UserDataDao, userData: UserDataEntity){
         val builder = AlertDialog.Builder(requireContext())
         builder.setTitle("Delete Data.") //title for alert
-        builder.setMessage("Are you sure you want to delete this data?")
+        builder.setMessage("Are you sure you want to delete this data?") //message for alert
         builder.setIcon(android.R.drawable.ic_dialog_alert)
 
-         //performing positive action
+         //performing positive button
         builder.setPositiveButton("Yes"){dialogInterface, _ ->
             lifecycleScope.launch {
                 userDataDao.delete(UserDataEntity(id))
@@ -221,7 +233,7 @@ class Home : Fragment() {
                 dialogInterface.dismiss() //dialog will be dismissed
             }
         }
-          //performing negative action
+          //performing negative button
         builder.setNegativeButton("No"){dialogInterface, which ->
             dialogInterface.dismiss()
         }

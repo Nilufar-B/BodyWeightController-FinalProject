@@ -15,7 +15,6 @@ class DataAdapter(private val data: ArrayList<UserDataEntity>,
 
 ): RecyclerView.Adapter<DataAdapter.ViewHolder>() {
 
-
     class ViewHolder(binding: DataBinding) : RecyclerView.ViewHolder(binding.root){
         val llMain = binding.llMain
         val tvWeightDaily = binding.tvWeightDaily
@@ -26,12 +25,9 @@ class DataAdapter(private val data: ArrayList<UserDataEntity>,
         val tvDate = binding.tvDate
     }
 
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         return ViewHolder(DataBinding.inflate(LayoutInflater.from(parent.context),parent,false))
-    }
-
-    override fun getItemCount(): Int {
-       return data.size
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
@@ -43,6 +39,7 @@ class DataAdapter(private val data: ArrayList<UserDataEntity>,
         holder.tvCalories.text = data.calories.toString()
         holder.tvSteps.text = data.steps.toString()
 
+        //show background color according to the odd/even position
         if (position % 2 == 0){
             holder.llMain.setBackgroundColor(ContextCompat.getColor(holder.itemView.context,
             R.color.LightGrey))
@@ -50,12 +47,20 @@ class DataAdapter(private val data: ArrayList<UserDataEntity>,
             holder.llMain.setBackgroundColor(ContextCompat.getColor(context, R.color.white))
         }
 
+       //update data
         holder.ivEdit.setOnClickListener{
             updateListener.invoke(data.id)
         }
 
+        //delete data
         holder.ivDelete.setOnClickListener{
             deleteListener.invoke(data.id)
         }
     }
+
+    override fun getItemCount(): Int {
+        return data.size
+    }
+
+
 }

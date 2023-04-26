@@ -11,7 +11,6 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
 import com.example.final_projectxml.databinding.FragmentBmiBinding
-import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
 import java.math.BigDecimal
 import java.math.RoundingMode
@@ -22,7 +21,11 @@ class BMI : Fragment() {
     private var _binding: FragmentBmiBinding? = null
     private val binding get() = _binding!!
 
-    private val viewModelBMI by viewModels<ViewModelBMI>()
+    private  val viewModelBMI: ViewModelBMI by viewModels()
+
+    private var selectedItemId: Int = 0
+
+
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -31,8 +34,11 @@ class BMI : Fragment() {
         _binding = FragmentBmiBinding.inflate(layoutInflater, container, false)
         val view = binding.root
 
-        val viewModelBMI = ViewModelProvider(this).get(ViewModelBMI::class.java)
+     //   val viewModelBMI = ViewModelProvider(this).get(ViewModelBMI::class.java)
 
+        savedInstanceState?.let {
+            selectedItemId = it.getInt("selectedItemId", 0)
+        }
 
 
         
@@ -70,7 +76,7 @@ class BMI : Fragment() {
 
         val bmiLable:String
         val bmiDescription: String
-
+/*
         if (bmi.compareTo(15f) <= 0){
             bmiLable = "Very severaly Underweight"
             bmiDescription = "Underweight, you need to eat more!Take care of yourself!"
@@ -93,7 +99,37 @@ class BMI : Fragment() {
             bmiLable = "Obese Class ||| (Very Severely obese)"
             bmiDescription = "OMG! Pull yourself together before it's too late!"
         }
-
+*/
+        when {
+            bmi <= 15f -> {
+                bmiLable = "Very severaly Underweight"
+                bmiDescription = "Underweight, you need to eat more!Take care of yourself!"
+            }
+            bmi > 15f && bmi <= 16f -> {
+                bmiLable = "Severely underweight"
+                bmiDescription = "Underweight, you need to eat more!Take care of yourself!"
+            }
+            bmi > 16f && bmi <= 18.5f -> {
+                bmiLable = "Underweight"
+                bmiDescription = "Underweight, you need to eat more!Take care of yourself!"
+            }
+            bmi > 18.5f && bmi <= 25f -> {
+                bmiLable = "Normal"
+                bmiDescription = "You are in a good shape!"
+            }
+            bmi > 25f && bmi <= 30f -> {
+                bmiLable = "Overweight"
+                bmiDescription = "You need to take care of yourself!Track calories and activity"
+            }
+            bmi > 30f && bmi <= 35f -> {
+                bmiLable = "Obesity"
+                bmiDescription = "Act now! Take care of yourself!"
+            }
+            else -> {
+                bmiLable = "Obese Class ||| (Very Severely obese)"
+                bmiDescription = "OMG! Pull yourself together before it's too late!"
+            }
+        }
 
         val bmiValue = BigDecimal(bmi.toDouble()).setScale(2, RoundingMode.HALF_EVEN).toString() //cat value to display
 
@@ -104,6 +140,7 @@ class BMI : Fragment() {
 
     }
 
+    //function to check if user entered values for both weight and height before doing any calculation
     private fun validateMetricUnits(): Boolean{
        var isValid = true
 
@@ -114,6 +151,7 @@ class BMI : Fragment() {
         }
         return isValid
     }
+
 
     override fun onDestroyView() {
         super.onDestroyView()

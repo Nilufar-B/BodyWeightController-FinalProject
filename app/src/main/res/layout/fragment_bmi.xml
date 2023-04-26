@@ -139,7 +139,7 @@
         android:layout_height="wrap_content"
         android:gravity="bottom"
         android:layout_marginTop="35dp"
-        android:backgroundTint="@color/purple_200"
+        android:backgroundTint="@color/orange"
         android:text="Calculate"
         android:textColor="@color/white"
         android:textSize="18sp"

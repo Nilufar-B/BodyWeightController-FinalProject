@@ -12,6 +12,7 @@
 
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:layout_marginTop="20dp"
     tools:context=".screens.Home">
 
 
@@ -65,6 +66,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Add"
+        android:backgroundTint="@color/orange"
+        android:textColor="@color/white"
         />
 
     <androidx.appcompat.widget.AppCompatTextView
@@ -120,7 +123,7 @@
         android:layout_marginBottom="12dp"
         android:layout_weight="1"
         android:text="Date"
-        android:textColor="@android:color/black"
+        android:textColor="@color/navy"
         android:textSize="16sp"
         android:textStyle="bold"
         android:visibility="gone"
@@ -139,7 +142,7 @@
         android:layout_weight="1"
         android:text="Weight"
         android:visibility="gone"
-        android:textColor="@android:color/black"
+        android:textColor="@color/navy"
         android:textSize="16sp"
         android:textStyle="bold"
         android:layout_marginLeft="90dp"
@@ -157,7 +160,7 @@
         android:layout_marginLeft="160dp"
         android:text="Calories"
         android:visibility="gone"
-        android:textColor="@android:color/black"
+        android:textColor="@color/navy"
         android:textSize="16sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/rvDataList"
@@ -174,7 +177,7 @@
         android:layout_marginLeft="240dp"
         android:text="Steps"
         android:visibility="gone"
-        android:textColor="@android:color/black"
+        android:textColor="@color/navy"
         android:textSize="16sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/rvDataList"

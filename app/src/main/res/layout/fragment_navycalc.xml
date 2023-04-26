@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".screens.About">
+    tools:context=".screens.NavyCalc">
 <Toolbar
     android:id="@+id/tollbar_profile"
     android:layout_width="match_parent"
@@ -15,60 +15,15 @@
         android:id="@+id/tvProfile"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Profile"
+        android:text="Calculate your Bodyfat."
+        android:textAlignment="center"
         android:layout_margin="8dp"
         android:textStyle="bold"
         android:textSize="20sp"
         />
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/ti_name"
         android:layout_below="@+id/tvProfile"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="8dp"
-        app:boxStrokeColor="@color/purple_700"
-        app:hintTextColor="@color/purple_700"
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-        >
-        <androidx.appcompat.widget.AppCompatEditText
-            android:id="@+id/et_name"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="Name"
-            android:inputType="text"
-            android:textSize="16sp"/>
-
-    </com.google.android.material.textfield.TextInputLayout>
-
-    <com.google.android.material.textfield.TextInputLayout
-        android:layout_below="@+id/ti_name"
-        android:id="@+id/ti_weight"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="8dp"
-        app:boxStrokeColor="@color/purple_700"
-        app:hintTextColor="@color/purple_700"
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-        >
-
-        <androidx.appcompat.widget.AppCompatEditText
-            android:id="@+id/et_weight"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_alignParentEnd="true"
-            android:layout_alignParentBottom="true"
-            android:layout_marginEnd="0dp"
-            android:layout_marginBottom="0dp"
-            android:hint="Weight (in kg)"
-            android:inputType="numberDecimal"
-            android:textSize="16sp" />
-
-
-    </com.google.android.material.textfield.TextInputLayout>
-
-    <com.google.android.material.textfield.TextInputLayout
-        android:layout_below="@+id/ti_weight"
         android:id="@+id/ti_height"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -91,6 +46,7 @@
             android:textSize="16sp" />
 
     </com.google.android.material.textfield.TextInputLayout>
+
 
     <com.google.android.material.textfield.TextInputLayout
         android:layout_below="@+id/ti_height"
@@ -170,15 +126,58 @@
 
     <androidx.appcompat.widget.AppCompatButton
 
-        android:id="@+id/btn_save"
-        android:layout_width="wrap_content"
+        android:id="@+id/btn_calculate"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/ti_hips"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="30dp"
-        android:layout_marginBottom="127dp"
-        android:text="Save" />
+        android:gravity="bottom"
+        android:layout_marginTop="35dp"
+        android:backgroundTint="@color/orange"
+        android:text="Calculate"
+        android:textColor="@color/white"
+        android:textSize="18sp"
+        android:textAlignment="center" />
+
+    <LinearLayout
+        android:padding="10dp"
+        android:layout_below="@id/btn_calculate"
+        android:id="@+id/NavyResult"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="25dp"
+        android:orientation="vertical"
+        android:visibility="invisible"
+        tools:visibility = "visible">
+
+        <TextView
+            android:id="@+id/tvNavy"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="Your body fat is:"
+            android:textAllCaps="true"
+            android:textSize="16dp" />
+
+        <TextView
+            android:id="@+id/tvNavyValue"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:gravity="center"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            tools:text="00.00" />
+
+        <TextView
+            android:id="@+id/tvNavyDescription"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:gravity="center"
+            android:textSize="18sp"
+            android:text="Normal" />
+
+    </LinearLayout>
 
 
 </RelativeLayout>
