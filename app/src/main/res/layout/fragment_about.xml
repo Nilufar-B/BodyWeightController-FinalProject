@@ -85,23 +85,20 @@
                android:layout_marginBottom="10dp"
                android:paddingTop="10dp"
                android:paddingBottom="10dp">
-               <androidx.appcompat.widget.AppCompatButton
-                   android:id="@+id/btnLater"
+
+               <TextView
+                   android:id="@+id/tvAdvice"
                    android:layout_width="wrap_content"
-                   android:layout_height="40dp"
-                   android:text="May Be, later."
-                   android:textAllCaps="false"
-                   android:textColor="@color/black"
-                   android:paddingStart="20dp"
-                   android:paddingEnd="20dp"
-                   android:background="@drawable/round_back_button"/>
+                   android:layout_height="wrap_content"
+                   android:text="Random advice"
+                   android:textAlignment="center"/>
 
                <androidx.appcompat.widget.AppCompatButton
-                   android:id="@+id/btnRateNow"
+                   android:id="@+id/btnGetAdvice"
                    android:layout_marginStart="20dp"
                    android:layout_width="wrap_content"
                    android:layout_height="40dp"
-                   android:text="Rate Now"
+                   android:text="Get Advice"
                    android:textColor="@color/white"
                    android:textAllCaps="false"
                    android:paddingStart="20dp"

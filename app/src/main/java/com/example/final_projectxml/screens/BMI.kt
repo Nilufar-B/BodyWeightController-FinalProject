@@ -23,7 +23,6 @@ class BMI : Fragment() {
 
     private  val viewModelBMI: ViewModelBMI by viewModels()
 
-    private var selectedItemId: Int = 0
 
 
 
@@ -34,22 +33,17 @@ class BMI : Fragment() {
         _binding = FragmentBmiBinding.inflate(layoutInflater, container, false)
         val view = binding.root
 
-        savedInstanceState?.let {
-            selectedItemId = it.getInt("selectedItemId", 0)
-        }
 
-
-        
         binding.btnCalculateBMI.setOnClickListener{
             if (validateMetricUnits()){
 
-            //    val heightValue: Float = binding?.etHeight?.text.toString().toFloat() / 100 //to get height value in meters
+                //    val heightValue: Float = binding?.etHeight?.text.toString().toFloat() / 100 //to get height value in meters
 
                 val heightValue: Float = binding.etHeight.text.toString().toFloat()
                 val weightValue: Float = binding.etWeight.text.toString().toFloat()
 
-              //  val bmi = weightValue / (heightValue*heightValue)
-               viewModelBMI.calculateBMI(heightValue, weightValue)
+                //  val bmi = weightValue / (heightValue*heightValue)
+                viewModelBMI.calculateBMI(heightValue, weightValue)
 
                 lifecycleScope.launch{
                     viewModelBMI.bmiState.collect{bmi ->
@@ -57,7 +51,9 @@ class BMI : Fragment() {
                     }
                 }
 
-             //  displayBMIResults(bmi)
+                //  displayBMIResults(bmi)
+                binding.etWeight.text?.clear()
+                binding.etHeight.text?.clear()
 
 
             } else{
@@ -117,7 +113,7 @@ class BMI : Fragment() {
 
     //function to check if user entered values for both weight and height before doing any calculation
     private fun validateMetricUnits(): Boolean{
-       var isValid = true
+        var isValid = true
 
         if(binding.etWeight.text.toString().isEmpty()){
             isValid = false

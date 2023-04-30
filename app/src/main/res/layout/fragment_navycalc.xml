@@ -31,32 +31,6 @@
 
     <com.google.android.material.textfield.TextInputLayout
         android:layout_below="@+id/tvProfile"
-        android:id="@+id/ti_weight"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="8dp"
-        app:boxStrokeColor="@color/purple_700"
-        app:hintTextColor="@color/purple_700"
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-        >
-
-        <androidx.appcompat.widget.AppCompatEditText
-            android:id="@+id/et_weight"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_alignParentEnd="true"
-            android:layout_alignParentBottom="true"
-            android:layout_marginEnd="0dp"
-            android:layout_marginBottom="0dp"
-            android:hint="Weight (in kg.)"
-            android:inputType="numberDecimal"
-            android:textSize="16sp" />
-
-    </com.google.android.material.textfield.TextInputLayout>
-
-
-    <com.google.android.material.textfield.TextInputLayout
-        android:layout_below="@+id/ti_weight"
         android:id="@+id/ti_height"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -81,10 +55,9 @@
     </com.google.android.material.textfield.TextInputLayout>
 
 
-
     <com.google.android.material.textfield.TextInputLayout
         android:layout_below="@+id/ti_height"
-        android:id="@+id/ti_age"
+        android:id="@+id/ti_neck"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="8dp"
@@ -94,60 +67,76 @@
         >
 
         <androidx.appcompat.widget.AppCompatEditText
-            android:id="@+id/et_age"
+            android:id="@+id/et_neck"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_alignParentEnd="true"
             android:layout_alignParentBottom="true"
             android:layout_marginEnd="0dp"
             android:layout_marginBottom="0dp"
-            android:hint="Age"
+            android:hint="Neck (in cm.)"
             android:inputType="numberDecimal"
             android:textSize="16sp" />
 
     </com.google.android.material.textfield.TextInputLayout>
 
-    <RadioGroup
-        android:id="@+id/genderRadioGroup"
+
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_below="@+id/ti_neck"
+        android:id="@+id/ti_waist"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentEnd="true"
-        android:layout_marginStart="0dp"
-        android:layout_marginTop="280dp"
-        android:layout_marginEnd="0dp"
-        android:checkedButton="@+id/maleRadioBtn"
-        android:orientation="horizontal"
-        android:gravity="center"
-
+        android:layout_margin="8dp"
+        app:boxStrokeColor="@color/purple_700"
+        app:hintTextColor="@color/purple_700"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         >
 
-        <RadioButton
-            android:id="@+id/maleRadioBtn"
-            android:layout_width="wrap_content"
+        <androidx.appcompat.widget.AppCompatEditText
+            android:id="@+id/et_waist"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:checked="true"
-            android:text="Male"
-            android:textSize="16sp"
-            android:padding="20dp"
-            />
-
-        <RadioButton
-            android:id="@+id/femaleRadioBtn"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Female"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginEnd="0dp"
+            android:layout_marginBottom="0dp"
+            android:hint="Waist (in cm.)"
+            android:inputType="numberDecimal"
             android:textSize="16sp" />
 
-    </RadioGroup>
+    </com.google.android.material.textfield.TextInputLayout>
 
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_below="@+id/ti_waist"
+        android:id="@+id/ti_hips"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="8dp"
+        app:boxStrokeColor="@color/purple_700"
+        app:hintTextColor="@color/purple_700"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        >
 
+        <androidx.appcompat.widget.AppCompatEditText
+            android:id="@+id/et_hips"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginEnd="0dp"
+            android:layout_marginBottom="0dp"
+            android:hint="Hips (in cm.)"
+            android:inputType="numberDecimal"
+            android:textSize="16sp" />
+
+    </com.google.android.material.textfield.TextInputLayout>
     <androidx.appcompat.widget.AppCompatButton
 
         android:id="@+id/btn_calculate"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/ti_age"
+        android:layout_below="@+id/ti_hips"
         android:layout_alignParentEnd="true"
         android:layout_marginTop="71dp"
         android:layout_marginEnd="0dp"

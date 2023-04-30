@@ -56,7 +56,6 @@ class Home : Fragment() {
     //create function to add data
     fun addData (userDataDao: UserDataDao){
 
-        //
         val calendar = Calendar.getInstance()
         val year = calendar.get(Calendar.YEAR)
         val month = calendar.get(Calendar.MONTH)
@@ -66,14 +65,9 @@ class Home : Fragment() {
             requireContext(),
             {_, year, monthOfYear, dayOfMonth ->
                 val date = LocalDate.of(year, monthOfYear + 1, dayOfMonth)
-                println(date)
-              //  val date = sdf.format(Date(year - 1900, monthOfYear, dayOfMonth))
-               // val dateString = dateFormat.format(date)
                 val weight = binding.etWeightDaily.text.toString()
                 val calories = binding.etCalories.text.toString()
                 val steps = binding.etSteps.text.toString()
-
-
 
                 //check if fields is not empty
                 if (weight.isNotEmpty() && calories.isNotEmpty() && steps.isNotEmpty()){
@@ -83,7 +77,6 @@ class Home : Fragment() {
                             calories = calories.toInt(),
                             steps = steps.toInt(),
                             date = date.toString(),
-
                             )
                         )
                         Toast.makeText(requireContext(), "Data saved!", Toast.LENGTH_LONG).show()

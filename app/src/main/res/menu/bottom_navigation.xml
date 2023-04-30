@@ -14,7 +14,7 @@
         android:icon="@drawable/baseline_body"
         />
 
-    <item android:title="About"
+    <item android:title="Rate us"
         android:id="@+id/about"
         android:icon="@drawable/baseline_about"
         />
