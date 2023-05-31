@@ -10,31 +10,36 @@
 
     <TextView
         android:id="@+id/tvTitle"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:fontFamily="@font/amita_bold"
         android:text="Update Data"
         android:textColor="@android:color/black"
-        android:textSize="18sp"
-        android:textStyle="bold" />
+        android:textSize="22sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
 
     <TextView
-        app:layout_constraintBottom_toBottomOf="@id/etDate"
-        app:layout_constraintTop_toTopOf="@id/etDate"
-        app:layout_constraintStart_toStartOf="parent"
         android:id="@+id/tvDate"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:fontFamily="cursive"
         android:text="Date"
-        android:textSize="18sp" />
+        android:textColor="@color/purple_700"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@id/etDate"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@id/etDate" />
 
     <EditText
         android:id="@+id/etDate"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
+        android:fontFamily="@font/amita_bold"
         android:hint="yy/MM/dd"
         android:inputType=""
         android:minHeight="48dp"
@@ -44,14 +49,17 @@
 
 
     <TextView
-        app:layout_constraintBottom_toBottomOf="@id/etUpdateWeight"
-        app:layout_constraintTop_toTopOf="@id/etUpdateWeight"
-        app:layout_constraintStart_toStartOf="parent"
         android:id="@+id/tvWeightDaily"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:fontFamily="cursive"
         android:text="Weight"
-        android:textSize="18sp" />
+        android:textColor="@color/purple_700"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@id/etUpdateWeight"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@id/etUpdateWeight" />
 
 
     <EditText
@@ -59,6 +67,7 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
+        android:fontFamily="@font/amita_bold"
         android:hint="Enter weight"
         android:inputType="numberDecimal"
         android:minHeight="48dp"
@@ -68,20 +77,24 @@
         app:layout_constraintTop_toBottomOf="@id/etDate" />
 
     <TextView
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintBottom_toBottomOf="@id/etUpdateCalories"
-        app:layout_constraintTop_toTopOf="@id/etUpdateCalories"
         android:id="@+id/tvCalories"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:fontFamily="cursive"
         android:text="Calories"
-        android:textSize="18sp" />
+        android:textColor="@color/purple_700"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@id/etUpdateCalories"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@id/etUpdateCalories" />
 
     <EditText
         android:id="@+id/etUpdateCalories"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
+        android:fontFamily="@font/amita_bold"
         android:hint="Enter calories."
         android:inputType="number"
         android:minHeight="48dp"
@@ -90,20 +103,24 @@
         app:layout_constraintTop_toBottomOf="@id/etUpdateWeight" />
 
     <TextView
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintBottom_toBottomOf="@id/etUpdateSteps"
-        app:layout_constraintTop_toTopOf="@id/etUpdateSteps"
         android:id="@+id/tvSteps"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:fontFamily="cursive"
         android:text="Steps"
-        android:textSize="18sp" />
+        android:textColor="@color/purple_700"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@id/etUpdateSteps"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@id/etUpdateSteps" />
 
     <EditText
         android:id="@+id/etUpdateSteps"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
+        android:fontFamily="@font/amita_bold"
         android:hint="Enter steps."
         android:inputType="number"
         android:minHeight="48dp"

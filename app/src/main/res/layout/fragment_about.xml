@@ -5,6 +5,7 @@
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:paddingTop="50dp"
+    android:background="@drawable/gradient"
     tools:context=".screens.About">
 
    <androidx.cardview.widget.CardView
@@ -19,7 +20,7 @@
            <View
                android:layout_width="match_parent"
                android:layout_height="120dp"
-               android:background="@color/yellow"/>
+               android:background="@color/orange"/>
            <RelativeLayout
                android:layout_width="150dp"
                android:layout_height="150dp"
@@ -85,25 +86,6 @@
                android:layout_marginBottom="10dp"
                android:paddingTop="10dp"
                android:paddingBottom="10dp">
-
-               <TextView
-                   android:id="@+id/tvAdvice"
-                   android:layout_width="wrap_content"
-                   android:layout_height="wrap_content"
-                   android:text="Random advice"
-                   android:textAlignment="center"/>
-
-               <androidx.appcompat.widget.AppCompatButton
-                   android:id="@+id/btnGetAdvice"
-                   android:layout_marginStart="20dp"
-                   android:layout_width="wrap_content"
-                   android:layout_height="40dp"
-                   android:text="Get Advice"
-                   android:textColor="@color/white"
-                   android:textAllCaps="false"
-                   android:paddingStart="20dp"
-                   android:paddingEnd="20dp"
-                   android:background="@drawable/round_button_rate_now"/>
 
            </androidx.appcompat.widget.LinearLayoutCompat>
        </androidx.appcompat.widget.LinearLayoutCompat>

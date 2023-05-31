@@ -7,7 +7,7 @@ import com.example.final_projectxml.databinding.ActivityMainBinding
 import com.example.final_projectxml.screens.About
 import com.example.final_projectxml.screens.Home
 import com.example.final_projectxml.screens.BMI
-import com.example.final_projectxml.screens.NavyCalc
+import com.example.final_projectxml.screens.Weather
 
 class MainActivity : AppCompatActivity() {
 
@@ -22,7 +22,7 @@ class MainActivity : AppCompatActivity() {
 
         val homeFragment = Home()
         val bmiFragment = BMI()
-        val navyCalcFragment = NavyCalc()
+        val weatherFragment = Weather()
         val aboutFragment = About()
 
         replaceFragment(homeFragment)
@@ -31,7 +31,7 @@ class MainActivity : AppCompatActivity() {
             when(it.itemId){
                 R.id.home -> replaceFragment(homeFragment)
                 R.id.bmi -> replaceFragment(bmiFragment)
-                R.id.navycalc -> replaceFragment(navyCalcFragment)
+                R.id.weather -> replaceFragment(weatherFragment)
                 R.id.about -> replaceFragment(aboutFragment)
             }
             true

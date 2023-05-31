@@ -8,11 +8,9 @@ import android.view.ViewGroup
 import android.view.animation.Animation
 import android.view.animation.ScaleAnimation
 import android.widget.ImageView
-import android.widget.RatingBar
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import com.example.final_projectxml.R
-import com.example.final_projectxml.api.AdviceViewModel
 import com.example.final_projectxml.databinding.FragmentAboutBinding
 import kotlinx.coroutines.launch
 
@@ -23,7 +21,6 @@ class About : Fragment() {
     private val binding get() = _binding!!
     private var selectedRating: Float = 0f
 
-    private val adviceViewModel by viewModels<AdviceViewModel>()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -45,14 +42,6 @@ class About : Fragment() {
             animateImage(binding.ratingImage)
         }
 
-        binding.btnGetAdvice.setOnClickListener {
-            lifecycleScope.launch {
-                val randomAdvice = adviceViewModel.loadRandomAdvice()
-                if (randomAdvice != null){
-                    binding.tvAdvice.text = randomAdvice.toString()
-                }
-            }
-        }
 
         return view
     }

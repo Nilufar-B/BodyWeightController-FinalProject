@@ -5,7 +5,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:fillViewport="true">
+    android:fillViewport="true"
+    android:background="@drawable/gradient"
+    >
 
 
 <androidx.constraintlayout.widget.ConstraintLayout
@@ -16,21 +18,18 @@
     tools:context=".screens.Home">
 
 
-
-      <androidx.appcompat.widget.AppCompatEditText
+    <androidx.appcompat.widget.AppCompatEditText
+        android:id="@+id/etWeightDaily"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
         android:layout_margin="10dp"
-          android:id="@+id/etWeightDaily"
-          android:layout_width="match_parent"
-          android:layout_height="wrap_content"
-          android:layout_alignParentEnd="true"
-          android:layout_alignParentBottom="true"
-          android:layout_marginEnd="0dp"
-          android:layout_marginBottom="0dp"
-          android:inputType="numberDecimal"
-          android:hint="Weight (in kg)."
-          android:textSize="16sp"
-          />
-
+        android:fontFamily="@font/amita_bold"
+        android:hint="Weight (in kg)."
+        android:inputType="numberDecimal"
+        android:textSize="16sp"
+        tools:layout_editor_absoluteX="10dp" />
 
 
     <androidx.appcompat.widget.AppCompatEditText
@@ -38,10 +37,11 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
+        android:fontFamily="@font/amita_bold"
         android:hint="Enter calories."
-        android:textSize="16sp"
         android:inputType="number"
         android:minHeight="48dp"
+        android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/tvCalories"
         app:layout_constraintTop_toBottomOf="@+id/etWeightDaily" />
@@ -52,10 +52,11 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
+        android:fontFamily="@font/amita_bold"
         android:hint="Enter steps."
-        android:textSize="16sp"
         android:inputType="number"
         android:minHeight="48dp"
+        android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/tvCalories"
         app:layout_constraintTop_toBottomOf="@+id/etCalories" />
@@ -71,17 +72,18 @@
         />
 
     <androidx.appcompat.widget.AppCompatTextView
-        android:layout_margin="10dp"
-        app:layout_constraintTop_toBottomOf="@+id/btnAddData"
         android:id="@+id/tvWeightDaily"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_margin="10dp"
         android:gravity="center"
         android:text="All inserted records."
         android:textColor="@color/black"
         android:textSize="18sp"
         android:textStyle="bold"
-        />
+        app:fontFamily="@font/amita_bold"
+        app:layout_constraintTop_toBottomOf="@+id/btnAddData"
+        tools:layout_editor_absoluteX="10dp" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -109,7 +111,9 @@
         android:gravity="center"
         android:text="No records available!!!"
         android:textSize="18sp"
+        android:textStyle="bold"
         android:visibility="gone"
+        app:fontFamily="@font/amita_bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintTop_toBottomOf="@id/btnAddData"
         app:layout_constraintVertical_bias="0.609"
@@ -120,71 +124,75 @@
         android:id="@+id/tvColumnDate"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
         android:layout_marginBottom="12dp"
         android:layout_weight="1"
         android:text="Date"
         android:textColor="@color/navy"
-        android:textSize="16sp"
+        android:textSize="20sp"
         android:textStyle="bold"
         android:visibility="gone"
-        android:layout_marginLeft="20dp"
+        app:fontFamily="cursive"
         app:layout_constraintBottom_toTopOf="@+id/rvDataList"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
-        tools:visibility="visible"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        tools:visibility="visible" />
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/tvColumnWeight"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginLeft="90dp"
         android:layout_marginBottom="12dp"
         android:layout_weight="1"
         android:text="Weight"
-        android:visibility="gone"
         android:textColor="@color/navy"
-        android:textSize="16sp"
+        android:textSize="20sp"
         android:textStyle="bold"
-        android:layout_marginLeft="90dp"
+        android:visibility="gone"
+        app:fontFamily="cursive"
         app:layout_constraintBottom_toTopOf="@+id/rvDataList"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
-        tools:visibility="visible"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        tools:visibility="visible" />
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/tvColumnCalories"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="12dp"
         android:layout_marginLeft="160dp"
+        android:layout_marginBottom="12dp"
         android:text="Calories"
-        android:visibility="gone"
         android:textColor="@color/navy"
-        android:textSize="16sp"
+        android:textSize="20sp"
         android:textStyle="bold"
+        android:visibility="gone"
+        app:fontFamily="cursive"
         app:layout_constraintBottom_toTopOf="@+id/rvDataList"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
-        tools:visibility="visible"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        tools:visibility="visible" />
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/tvColumnSteps"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="12dp"
         android:layout_marginLeft="240dp"
+        android:layout_marginBottom="12dp"
         android:text="Steps"
-        android:visibility="gone"
         android:textColor="@color/navy"
-        android:textSize="16sp"
+        android:textSize="20sp"
         android:textStyle="bold"
+        android:visibility="gone"
+        app:fontFamily="cursive"
         app:layout_constraintBottom_toTopOf="@+id/rvDataList"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
-        tools:visibility="visible"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        tools:visibility="visible" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
 </ScrollView>

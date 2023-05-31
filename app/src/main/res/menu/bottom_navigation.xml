@@ -9,8 +9,8 @@
         android:id="@+id/bmi"
         android:icon="@drawable/baseline_journal"
         />
-    <item android:title="BodyFat"
-        android:id="@+id/navycalc"
+    <item android:title="Weather"
+        android:id="@+id/weather"
         android:icon="@drawable/baseline_body"
         />
 

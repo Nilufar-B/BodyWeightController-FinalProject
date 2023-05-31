@@ -23,6 +23,11 @@ class DataAdapter(private val data: ArrayList<UserDataEntity>,
         val ivEdit = binding.ivEdit
         val ivDelete = binding.ivDelete
         val tvDate = binding.tvDate
+
+    }
+
+    init {
+        data.sortByDescending { it.date }
     }
 
 
@@ -42,9 +47,9 @@ class DataAdapter(private val data: ArrayList<UserDataEntity>,
         //show background color according to the odd/even position
         if (position % 2 == 0){
             holder.llMain.setBackgroundColor(ContextCompat.getColor(holder.itemView.context,
-            R.color.LightGrey))
+            R.color.yellow_ad))
         }else{
-            holder.llMain.setBackgroundColor(ContextCompat.getColor(context, R.color.white))
+            holder.llMain.setBackgroundColor(ContextCompat.getColor(context, R.color.blue_ad))
         }
 
        //update data

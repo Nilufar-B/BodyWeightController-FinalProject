@@ -6,6 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fillViewport="true"
+    android:background="@drawable/gradient"
     >
     <RelativeLayout
 
@@ -16,7 +17,7 @@
             android:id="@+id/tollbar_profile"
             android:layout_width="match_parent"
             android:layout_height="?android:attr/actionBarSize"
-            android:background="@color/white" />
+           />
 
         <TextView
             android:id="@+id/tvCalcBMI"
@@ -50,6 +51,7 @@
                 android:layout_alignParentBottom="true"
                 android:layout_marginEnd="0dp"
                 android:layout_marginBottom="0dp"
+                android:fontFamily="@font/amita_bold"
                 android:hint="Weight (in kg)"
                 android:inputType="numberDecimal"
                 android:textSize="16sp" />
@@ -76,6 +78,7 @@
                 android:layout_alignParentBottom="true"
                 android:layout_marginEnd="0dp"
                 android:layout_marginBottom="0dp"
+                android:fontFamily="@font/amita_bold"
                 android:hint="Height (in cm)"
                 android:inputType="numberDecimal"
                 android:textSize="16sp" />
@@ -97,10 +100,13 @@
                 android:id="@+id/tvBMI"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:fontFamily="cursive"
                 android:gravity="center"
                 android:text="Your BMI"
                 android:textAllCaps="true"
-                android:textSize="16dp" />
+                android:textColor="@color/purple_700"
+                android:textSize="16dp"
+                android:textStyle="bold" />
 
             <TextView
                 android:id="@+id/tvBMIValue"
@@ -125,9 +131,11 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="5dp"
+                android:fontFamily="@font/amita_bold"
                 android:gravity="center"
+                android:text="Normal"
                 android:textSize="18sp"
-                android:text="Normal" />
+                android:textStyle="bold" />
 
         </LinearLayout>
 

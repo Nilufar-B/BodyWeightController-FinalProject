@@ -99,37 +99,6 @@ class Home : Fragment() {
         )
 
         datePickerDialog.show() //show calendar
-
-/*
-        val weight = binding?.etWeightDaily?.text.toString()
-        val calories = binding?.etCalories?.text.toString()
-        val steps = binding?.etSteps?.text.toString()
-
-
-        //check if fields is not empty
-        if (weight.isNotEmpty() && calories.isNotEmpty() && steps.isNotEmpty()){
-            lifecycleScope.launch{
-                userDataDao.insert(UserDataEntity(
-
-                                                  weight=weight.toFloat(),
-                                                  calories = calories.toInt(),
-                                                  steps = steps.toInt(),
-
-                )
-                  )
-                Toast.makeText(requireContext(), "Data saved!", Toast.LENGTH_LONG).show()
-
-               //clear fields when we press the button
-                binding?.etWeightDaily?.text?.clear()
-                binding?.etCalories?.text?.clear()
-                binding?.etSteps?.text?.clear()
-            }
-        }else{
-            //show toast if fields is empty
-            Toast.makeText(requireContext(),
-            "Fields cannot be blank.",
-            Toast.LENGTH_LONG).show()
-        }*/
     }
 
     private fun setupListOfData(dataList: ArrayList<UserDataEntity>,
